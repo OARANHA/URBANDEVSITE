@@ -7,13 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { 
-  LineChart, 
-  BarChart, 
-  PieChart, 
-  AreaChart,
-  StatCard 
-} from '@/components/charts'
+import { LineChart } from '@/components/charts/LineChart'
+import { BarChart } from '@/components/charts/BarChart'
+import { PieChart } from '@/components/charts/PieChart'
+import { AreaChart } from '@/components/charts/AreaChart'
 import { 
   Users, 
   FolderOpen, 
