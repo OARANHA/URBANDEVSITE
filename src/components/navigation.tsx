@@ -4,14 +4,14 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { 
-  Home, 
-  Bot, 
-  Zap, 
-  Settings, 
-  Workflow, 
-  Mail, 
-  LogIn, 
+import {
+  Home,
+  Bot,
+  Zap,
+  Settings,
+  Workflow,
+  Mail,
+  LogIn,
   User,
   Menu,
   X,
@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useAuth } from "@/components/auth-provider"
+import { ComingSoonPopup } from "@/components/coming-soon-popup"
 
 const navigation = [
   { name: "Home", href: "/", icon: Home },
@@ -60,7 +61,7 @@ export function Navigation() {
             </span>
           </Link>
         </div>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navigation.map((item) => {
@@ -70,7 +71,7 @@ export function Navigation() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "flex items-center space-x-2 text-sm font-medium transition-colors hover:text-orange-600",
+                  "flex items-center space-x-2 text-sm font-medium transition-colors hover:text-orange-600",       
                   pathname === item.href
                     ? "text-orange-600"
                     : "text-muted-foreground"
@@ -123,33 +124,33 @@ export function Navigation() {
             </div>
           ) : isConfigured ? (
             <div className="hidden md:flex items-center space-x-2">
-              <Button variant="outline" size="sm" asChild>
-                <Link href="http://localhost:3001/login" target="_blank" rel="noopener noreferrer">
+              <ComingSoonPopup>
+                <Button variant="outline" size="sm">
                   <LogIn className="h-4 w-4 mr-2" />
                   Já Sou Cliente
-                </Link>
-              </Button>
-              <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white" asChild>
-                <Link href="http://localhost:3001/login" target="_blank" rel="noopener noreferrer">
+                </Button>
+              </ComingSoonPopup>
+              <ComingSoonPopup>
+                <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white">
                   <User className="h-4 w-4 mr-2" />
                   Área do Cliente
-                </Link>
-              </Button>
+                </Button>
+              </ComingSoonPopup>
             </div>
           ) : (
             <div className="hidden md:flex items-center space-x-2">
-              <Button variant="outline" size="sm" asChild>
-                <Link href="http://localhost:3001/login" target="_blank" rel="noopener noreferrer">
+              <ComingSoonPopup>
+                <Button variant="outline" size="sm">
                   <LogIn className="h-4 w-4 mr-2" />
                   Já Sou Cliente
-                </Link>
-              </Button>
-              <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white" asChild>
-                <Link href="http://localhost:3001/login" target="_blank" rel="noopener noreferrer">
+                </Button>
+              </ComingSoonPopup>
+              <ComingSoonPopup>
+                <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white">
                   <User className="h-4 w-4 mr-2" />
                   Área do Cliente
-                </Link>
-              </Button>
+                </Button>
+              </ComingSoonPopup>
             </div>
           )}
 
@@ -168,8 +169,8 @@ export function Navigation() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-4">
                 <div className="flex items-center justify-between">
-                  <Link 
-                    href="/" 
+                  <Link
+                    href="/"
                     className="flex items-center space-x-2"
                     onClick={() => setIsOpen(false)}
                   >
@@ -181,7 +182,7 @@ export function Navigation() {
                     </span>
                   </Link>
                 </div>
-                
+
                 <nav className="flex flex-col space-y-2">
                   {navigation.map((item) => {
                     const Icon = item.icon
@@ -207,8 +208,8 @@ export function Navigation() {
                 <div className="flex flex-col space-y-2 pt-4 border-t">
                   {user ? (
                     <>
-                      <Button 
-                        variant="ghost" 
+                      <Button
+                        variant="ghost"
                         className="justify-start"
                         asChild
                         onClick={() => setIsOpen(false)}
@@ -218,8 +219,8 @@ export function Navigation() {
                           Dashboard
                         </Link>
                       </Button>
-                      <Button 
-                        variant="ghost" 
+                      <Button
+                        variant="ghost"
                         className="justify-start"
                         onClick={() => {
                           signOut()
@@ -232,51 +233,47 @@ export function Navigation() {
                     </>
                   ) : isConfigured ? (
                     <>
-                      <Button 
-                        variant="ghost" 
-                        className="justify-start"
-                        asChild
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Link href="/login">
+                      <ComingSoonPopup>
+                        <Button
+                          variant="ghost"
+                          className="justify-start w-full"
+                          onClick={() => setIsOpen(false)}
+                        >
                           <LogIn className="h-4 w-4 mr-2" />
-                          Login
-                        </Link>
-                      </Button>
-                      <Button 
-                        className="justify-start bg-orange-500 hover:bg-orange-600 text-white"
-                        asChild
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Link href="/dashboard">
+                          Já Sou Cliente
+                        </Button>
+                      </ComingSoonPopup>
+                      <ComingSoonPopup>
+                        <Button
+                          className="justify-start w-full bg-orange-500 hover:bg-orange-600 text-white"
+                          onClick={() => setIsOpen(false)}
+                        >
                           <User className="h-4 w-4 mr-2" />
                           Área do Cliente
-                        </Link>
-                      </Button>
+                        </Button>
+                      </ComingSoonPopup>
                     </>
                   ) : (
                     <>
-                      <Button 
-                        variant="ghost" 
-                        className="justify-start"
-                        asChild
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Link href="http://localhost:3001/login" target="_blank" rel="noopener noreferrer">
+                      <ComingSoonPopup>
+                        <Button
+                          variant="ghost"
+                          className="justify-start w-full"
+                          onClick={() => setIsOpen(false)}
+                        >
                           <LogIn className="h-4 w-4 mr-2" />
                           Já Sou Cliente
-                        </Link>
-                      </Button>
-                      <Button 
-                        className="justify-start bg-orange-500 hover:bg-orange-600 text-white"
-                        asChild
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Link href="http://localhost:3001/login" target="_blank" rel="noopener noreferrer">
+                        </Button>
+                      </ComingSoonPopup>
+                      <ComingSoonPopup>
+                        <Button
+                          className="justify-start w-full bg-orange-500 hover:bg-orange-600 text-white"
+                          onClick={() => setIsOpen(false)}
+                        >
                           <User className="h-4 w-4 mr-2" />
                           Área do Cliente
-                        </Link>
-                      </Button>
+                        </Button>
+                      </ComingSoonPopup>
                     </>
                   )}
                 </div>
