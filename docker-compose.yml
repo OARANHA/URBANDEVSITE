@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  # Serviço principal da aplicação
+  urbanDev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: urbanDev-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./dev.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=your-secret-key
+      - ZAI_API_KEY=${ZAI_API_KEY}
+      - ZAI_BASE_URL=${ZAI_BASE_URL}
+    volumes:
+      - ./db:/app/db
+    networks:
+      - urbanDev-network
+    depends_on:
+      - postgres
+      - redis
+
+  # Serviço de banco de dados PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: urbanDev-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: urbandev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./prisma/schema.prisma:/docker-entrypoint-initdb.d/schema.prisma
+    networks:
+      - urbanDev-network
+
+  # Serviço de cache Redis
+  redis:
+    image: redis:7-alpine
+    container_name: urbanDev-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - urbanDev-network
+
+  # Serviço Flowise (opcional)
+  flowise:
+    image: flowise/flowise:latest
+    container_name: urbanDev-flowise
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - FLOWISE_USERNAME=admin
+      - FLOWISE_PASSWORD=1234
+    volumes:
+      - ./flowise:/app/.flowise
+    networks:
+      - urbanDev-network
+    depends_on:
+      - redis
+
+  # Serviço Nginx (opcional - proxy reverso)
+  nginx:
+    image: nginx:alpine
+    container_name: urbanDev-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - urbanDev
+    networks:
+      - urbanDev-network
+
+# Volumes persistentes
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+# Redes personalizadas
+networks:
+  urbanDev-network:
+    driver: bridge
