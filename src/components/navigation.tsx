@@ -1,27 +1,7 @@
 "use client"
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
+import { useAuth } from "@/components/auth-provider"
+import { ComingSoonPopup } from "@/components/coming-soon-popup"
 import { Button } from "@/components/ui/button"
-import {
-  Home,
-  Bot,
-  Zap,
-  Settings,
-  Workflow,
-  Mail,
-  LogIn,
-  User,
-  Menu,
-  X,
-  Moon,
-  Sun,
-  LogOut,
-  Sparkles,
-  Play
-} from "lucide-react"
-import { useTheme } from "next-themes"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,8 +9,27 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { useAuth } from "@/components/auth-provider"
-import { ComingSoonPopup } from "@/components/coming-soon-popup"
+import { cn } from "@/lib/utils"
+import {
+  Bot,
+  Home,
+  LogIn,
+  LogOut,
+  Mail,
+  Menu,
+  Moon,
+  Play,
+  Settings,
+  Sparkles,
+  Sun,
+  User,
+  Workflow,
+  Zap
+} from "lucide-react"
+import { useTheme } from "next-themes"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import * as React from "react"
 
 const navigation = [
   { name: "Home", href: "/", icon: Home },
@@ -46,7 +45,7 @@ export function Navigation() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = React.useState(false)
-  const { user, loading, isConfigured, signOut } = useAuth()
+  const { user, loading, signOut } = useAuth()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -122,21 +121,6 @@ export function Navigation() {
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
-          ) : isConfigured ? (
-            <div className="hidden md:flex items-center space-x-2">
-              <ComingSoonPopup>
-                <Button variant="outline" size="sm">
-                  <LogIn className="h-4 w-4 mr-2" />
-                  Já Sou Cliente
-                </Button>
-              </ComingSoonPopup>
-              <ComingSoonPopup>
-                <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white">
-                  <User className="h-4 w-4 mr-2" />
-                  Área do Cliente
-                </Button>
-              </ComingSoonPopup>
-            </div>
           ) : (
             <div className="hidden md:flex items-center space-x-2">
               <ComingSoonPopup>
@@ -148,7 +132,7 @@ export function Navigation() {
               <ComingSoonPopup>
                 <Button size="sm" className="bg-orange-500 hover:bg-orange-600 text-white">
                   <User className="h-4 w-4 mr-2" />
-                  Área do Cliente
+                  Cadastre-se
                 </Button>
               </ComingSoonPopup>
             </div>
@@ -231,28 +215,6 @@ export function Navigation() {
                         Sair
                       </Button>
                     </>
-                  ) : isConfigured ? (
-                    <>
-                      <ComingSoonPopup>
-                        <Button
-                          variant="ghost"
-                          className="justify-start w-full"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <LogIn className="h-4 w-4 mr-2" />
-                          Já Sou Cliente
-                        </Button>
-                      </ComingSoonPopup>
-                      <ComingSoonPopup>
-                        <Button
-                          className="justify-start w-full bg-orange-500 hover:bg-orange-600 text-white"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <User className="h-4 w-4 mr-2" />
-                          Área do Cliente
-                        </Button>
-                      </ComingSoonPopup>
-                    </>
                   ) : (
                     <>
                       <ComingSoonPopup>
@@ -271,7 +233,7 @@ export function Navigation() {
                           onClick={() => setIsOpen(false)}
                         >
                           <User className="h-4 w-4 mr-2" />
-                          Área do Cliente
+                          Cadastre-se
                         </Button>
                       </ComingSoonPopup>
                     </>
