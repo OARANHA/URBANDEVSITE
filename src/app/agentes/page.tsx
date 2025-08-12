@@ -1,35 +1,30 @@
 "use client"
-import { useState } from "react"
+import { ChatInterface } from "@/components/chat-interface"
 import { Layout } from "@/components/layout"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  Brain, 
-  Cpu, 
-  Target, 
-  Zap, 
-  Users, 
-  BarChart3, 
-  MessageSquare, 
-  Workflow,
-  Shield,
-  TrendingUp,
-  Puzzle,
-  Lightbulb,
+import {
   ArrowRight,
-  Play,
+  BarChart3,
+  Bot,
+  Brain,
   CheckCircle,
   Clock,
+  Cpu,
   Database,
+  Megaphone,
+  MessageSquare,
   Network,
-  Bot,
+  Puzzle,
   Sparkles,
-  Megaphone
+  Target,
+  Users,
+  Workflow,
+  Zap
 } from "lucide-react"
 import Link from "next/link"
-import { ChatInterface } from "@/components/chat-interface"
+import { useState } from "react"
 
 const capabilities = [
   {
@@ -595,7 +590,7 @@ export default function AgentesPage() {
                     <div className="bg-gradient-to-r from-purple-50 to-orange-50 dark:from-purple-950/20 dark:to-orange-950/20 rounded-lg p-4">
                       <h4 className="font-medium text-sm mb-2">Tecnologia Utilizada:</h4>
                       <ul className="text-xs space-y-1 text-muted-foreground">
-                        <li>• Modelo GLM-4.5-Flash da Z.AI</li>
+                        <li>• Modelo GLM-4.5 da Z.AI</li>
                         <li>• Processamento de linguagem natural</li>
                         <li>• Análise contextual em tempo real</li>
                         <li>• Integração com sistemas empresariais</li>
@@ -611,7 +606,7 @@ export default function AgentesPage() {
                 Demonstração com IA Real
               </Badge>
               <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-                Este chat utiliza o modelo GLM-4.5-Flash da Z.AI para fornecer respostas 
+                Este chat utiliza o modelo GLM da Z.AI para fornecer respostas 
                 inteligentes e contextualizadas em tempo real. Experimente fazer perguntas 
                 sobre negócios, análise de dados ou automação!
               </p>
@@ -682,7 +677,7 @@ export default function AgentesPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 urbanDev. Todos os direitos reservados.</p>
+            <p>&copy; 2025 urbanDev. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

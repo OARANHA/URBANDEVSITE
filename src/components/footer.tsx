@@ -1,23 +1,23 @@
 "use client"
 
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { 
-  Sparkles, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
-  Instagram,
+import {
   ArrowRight,
+  Facebook,
   Heart,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
   Shield,
-  Zap,
+  Sparkles,
+  Target,
+  Twitter,
   Users,
-  Target
+  Zap
 } from "lucide-react"
+import Link from "next/link"
 
 const footerSections = [
   {
@@ -67,8 +67,8 @@ const socialLinks = [
 
 const contactInfo = [
   { icon: Mail, label: "contato@urbandev.com", href: "mailto:contato@urbandev.com" },
-  { icon: Phone, label: "+55 11 99999-9999", href: "tel:+5511999999999" },
-  { icon: MapPin, label: "São Paulo, SP - Brasil", href: "#" }
+  { icon: Phone, label: "+55 51 990104506", href: "tel:+5551990104506" },
+  { icon: MapPin, label: "Rio Grande do Sul, RS - Brasil", href: "#" }
 ]
 
 export function Footer() {
@@ -187,7 +187,7 @@ export function Footer() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <span>© 2024 UrbanDev. Todos os direitos reservados.</span>
+              <span>© 2025 UrbanDev. Todos os direitos reservados.</span>
             </div>
 
             <div className="flex items-center space-x-6 text-sm text-muted-foreground">
