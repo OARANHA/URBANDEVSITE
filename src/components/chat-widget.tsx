@@ -1,19 +1,19 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { 
-  MessageSquare, 
-  Send, 
-  Bot, 
-  User,
-  Minimize2,
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Bot,
+  Loader2,
   Maximize2,
-  X,
-  Loader2
+  MessageSquare,
+  Minimize2,
+  Send,
+  User,
+  X
 } from "lucide-react"
+import { useState } from "react"
 
 interface Message {
   id: string
@@ -243,7 +243,7 @@ export function ChatWidget({
           
           <div className="mt-2 text-xs text-center text-muted-foreground">
             <Badge variant="outline" className="text-xs">
-              Powered by Z.AI GLM-4.5-Flash
+              Powered by UrbanDev
             </Badge>
           </div>
         </CardContent>

@@ -1,19 +1,19 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { 
-  MessageSquare, 
-  Send, 
-  Bot, 
-  User,
-  Clock,
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Bot,
   CheckCircle,
-  Zap,
-  Loader2
+  Clock,
+  Loader2,
+  MessageSquare,
+  Send,
+  User,
+  Zap
 } from "lucide-react"
+import { useState } from "react"
 
 interface Message {
   id: string
@@ -296,7 +296,7 @@ export function AgentChatReal() {
                 <div className="bg-gradient-to-r from-purple-50 to-orange-50 dark:from-purple-950/20 dark:to-orange-950/20 rounded-lg p-4">
                   <h4 className="font-medium text-sm mb-2">Tecnologia Utilizada:</h4>
                   <ul className="text-xs space-y-1 text-muted-foreground">
-                    <li>• Modelo GLM-4.5-Flash da Z.AI</li>
+                    <li>• Modelo GLM-4.5 da Z.AI</li>
                     <li>• Processamento de linguagem natural</li>
                     <li>• Análise contextual em tempo real</li>
                     <li>• Integração com sistemas empresariais</li>
@@ -312,7 +312,7 @@ export function AgentChatReal() {
             Demonstração com IA Real
           </Badge>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            Este chat utiliza o modelo GLM-4.5-Flash da Z.AI para fornecer respostas 
+            Este chat utiliza o modelo  ZAI para fornecer respostas 
             inteligentes e contextualizadas em tempo real. Experimente fazer perguntas 
             sobre negócios, análise de dados ou automação!
           </p>
